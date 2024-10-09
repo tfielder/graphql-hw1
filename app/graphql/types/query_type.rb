@@ -27,5 +27,13 @@ module Types
     def test_field
       "Hello World!"
     end
+
+    field :user, Types::UserType, null: false, description: "A user" do
+      argument :id, ID, required: true
+    end
+    
+    def user(id:)
+      User.find(:id)
+    end
   end
 end
