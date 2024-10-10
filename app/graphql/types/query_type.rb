@@ -28,12 +28,28 @@ module Types
       "Hello World!"
     end
 
-    field :user, Types::UserType, null: false, description: "A user" do
+    field :user, Types::UserType, null: true, description: "A user" do
       argument :id, ID, required: true
     end
     
     def user(id:)
-      User.find(:id)
+      User.where(id: id).first
+    end
+
+    field :post, Types::PostType, null: false, description: "A post" do
+      argument :id, ID, required: true
+    end
+
+    def post(id:)
+      Post.where(id: id).first
+    end
+
+    field :comment, Types::CommentType, null: false, description: "A Comment" do
+      argument :id, ID, required: true
+    end
+
+    def comment(id:)
+      Comment.where(id: id).first
     end
   end
 end

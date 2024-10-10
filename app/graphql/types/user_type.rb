@@ -11,4 +11,5 @@ class Types::UserType < Types::BaseObject
     field :country, String, null: true
     field :full_address, String, null: true
     field :full_name, String, null: true
+    field :posts, [Types::PostType], null: true
 end
